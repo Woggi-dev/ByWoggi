@@ -22,7 +22,7 @@ namespace ByWoggi
     {
         public MainWindow()
         {
-            InitializeComponent();
+                InitializeComponent();
         }
     }
 }

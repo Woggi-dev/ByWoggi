@@ -5,61 +5,95 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ByWoggi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000" MinWidth="650">
+    <!-- Ресурсы для стилизации элементов -->
+    <Window.Resources>
+        <!-- Стиль шапки -->
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="24"/>
+        </Style>
+        <!-- Основная иконка шапки -->
+        <Style x:Key="HeaderImageStyle" TargetType="Image">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="2 0 6 0"/>
+        </Style>
+        <!-- Иконка профиля пользователя -->
+        <Style x:Key="ProfileImageStyle" TargetType="Image">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <!-- Иконка смена темы-->
+        <Style x:Key="ThemeImageStyle" TargetType="Image">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <!-- Текстовое поле поиска-->
+        <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Padding" Value="10 7 2 0"/>
+            <Setter Property="Foreground" Value="#FFC9C4C4"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="#FF242424"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Height" Value="31"/>
+            <Setter Property="SelectionBrush" Value="{x:Null}"/>
+            <Setter Property="Width" Value="212"/>
+        </Style>
+    </Window.Resources>
     <!-- Родительский контейнер -->
     <Grid Background="#FF242424">
         <!-- Контейнер со всем контентом  -->
-        <Border Margin="120,35" Background="#FF12120C" CornerRadius="10" ClipToBounds="False">
+        <Border Margin="30,35" Background="#FF12120C" CornerRadius="10" ClipToBounds="False" MaxWidth="900">
             <Grid>
                 <Grid.RowDefinitions>
                     <!-- Ряды под шапку, разделитель и основной контент с играми  -->
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="10">
-                    </RowDefinition>
-                    <RowDefinition Height="388*"></RowDefinition>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <!-- Колонки под шапку, основной контент с играми, разделитель и панель с выбором жанров игр  -->
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Разделитель контента  -->
                 <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#FF242424"></Border>
-                
+
                 <!-- Шапка  -->
-                <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" LastChildFill="True">
                     <!-- Левая группа: иконка и название -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" DockPanel.Dock="Left" Width="Auto">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch" DockPanel.Dock="Left">
                         <!-- Иконка -->
-                        <Image Source="images/main.png" Width="50" Margin="2 0 6 0"/>
+                        <Image Source="images/main.png" Style="{StaticResource HeaderImageStyle}"/>
                         <!-- Название приложения -->
-                        <TextBlock Text="BYWOGGI" VerticalAlignment="Center" FontFamily="Bahnschrift" FontSize="23" Foreground="White" FontWeight="Bold" Height="24" />
+                        <TextBlock Text="BYWOGGI" Style="{StaticResource HeaderTextStyle}"/>
                     </StackPanel>
 
                     <!-- Правая группа: кнопка смены темы и иконка профиля -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" DockPanel.Dock="Right">
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                         <!-- Кнопка для смены темы -->
-                        <Image Source="images\sun.png" Width="30" Height="30" Margin="10"/>
+                        <Image Source="images\sun.png" Style="{StaticResource ThemeImageStyle}"/>
                         <!-- Иконка профиля -->
-                        <Image Source="images\avatar.png" Width="50" Margin="10"/>
+                        <Image Source="images\avatar.png" Style="{StaticResource ProfileImageStyle}"/>
                     </StackPanel>
-                    
+
                     <!-- Центральная группа: поиск с закругленными краями -->
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto">
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30 0" >
                         <!-- Бордер для закругления краев текстбокса -->
-                        <Border CornerRadius="5" Background="#FF242424" Padding="0" Width="212" >
+                        <Border CornerRadius="5" Background="#FF242424" Padding="0" >
                             <!-- Текстбокс поиска -->
-                            <TextBox Text="Поиск..." 
-                                 Padding="10 7 2 0" Foreground="#FFC9C4C4" BorderBrush="{x:Null}" 
-                                 Background="#FF242424" FontFamily="Bahnschrift" UseLayoutRounding="False" 
-                                 Width="210" Height="31" 
-                                 SelectionBrush="{x:Null}"/>
+                            <TextBox Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}"/>
                         </Border>
                     </StackPanel>
                 </DockPanel>
             </Grid>
-
         </Border>
     </Grid>
 </Window>
