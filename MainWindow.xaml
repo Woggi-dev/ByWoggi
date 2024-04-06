@@ -1,16 +1,15 @@
 ﻿<Window x:Class="ByWoggi.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ByWoggi"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" MinWidth="650">
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:ByWoggi"
+            mc:Ignorable="d"
+         Title="MainWindow" Height="600" Width="1000" MinWidth="650" FontFamily="Bahnschrift">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
         <!-- Стиль шапки -->
         <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Bahnschrift"/>
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -24,7 +23,7 @@
         </Style>
         <!-- Иконка профиля пользователя -->
         <Style x:Key="ProfileImageStyle" TargetType="Image">
-            <Setter Property="Width" Value="50"/>
+            <Setter Property="Width" Value="40"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
         <!-- Иконка смена темы-->
@@ -45,14 +44,21 @@
             <Setter Property="SelectionBrush" Value="{x:Null}"/>
             <Setter Property="Width" Value="212"/>
         </Style>
+        <Style x:Key="GenreSelectionStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5 3"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+        </Style>
     </Window.Resources>
     <!-- Родительский контейнер -->
     <Grid Background="#FF242424">
         <!-- Контейнер со всем контентом  -->
-        <Border Margin="30,35" Background="#FF12120C" CornerRadius="10" ClipToBounds="False" MaxWidth="900">
+        <Border Margin="30,35" ClipToBounds="False" MaxWidth="1000">
             <Grid>
                 <Grid.RowDefinitions>
-                    <!-- Ряды под шапку, разделитель и основной контент с играми  -->
+                    <!-- Ряды под шапку, основной контент с играми, разделитель и панель с выбором жанров игр  -->
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="*"/>
@@ -61,38 +67,69 @@
                     <!-- Колонки под шапку, основной контент с играми, разделитель и панель с выбором жанров игр  -->
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.6*"/>
                 </Grid.ColumnDefinitions>
                 <!-- Разделитель контента  -->
                 <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#FF242424"></Border>
+                <Border Grid.Column="1" Grid.Row="2" Background="#FF242424"></Border>
 
                 <!-- Шапка  -->
-                <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" LastChildFill="True">
-                    <!-- Левая группа: иконка и название -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch" DockPanel.Dock="Left">
-                        <!-- Иконка -->
-                        <Image Source="images/main.png" Style="{StaticResource HeaderImageStyle}"/>
-                        <!-- Название приложения -->
-                        <TextBlock Text="BYWOGGI" Style="{StaticResource HeaderTextStyle}"/>
-                    </StackPanel>
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="10" Background="#FF12120C">
+                    <DockPanel>
+                        <!-- Левая группа: иконка и название -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch" DockPanel.Dock="Left">
+                            <!-- Основная Иконка -->
+                            <Image Source="images/main.png" Style="{StaticResource HeaderImageStyle}"/>
+                            <!-- Название приложения -->
+                            <TextBlock Text="BYWOGGI" Style="{StaticResource HeaderTextStyle}"/>
+                        </StackPanel>
+                        <Image Source="images\sun.png" x:Name="ThemeIcon" Style="{StaticResource ThemeImageStyle}" DockPanel.Dock="Right"/>
 
-                    <!-- Правая группа: кнопка смены темы и иконка профиля -->
-                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                        <!-- Кнопка для смены темы -->
-                        <Image Source="images\sun.png" Style="{StaticResource ThemeImageStyle}"/>
-                        <!-- Иконка профиля -->
-                        <Image Source="images\avatar.png" Style="{StaticResource ProfileImageStyle}"/>
-                    </StackPanel>
 
-                    <!-- Центральная группа: поиск с закругленными краями -->
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30 0" >
-                        <!-- Бордер для закругления краев текстбокса -->
-                        <Border CornerRadius="5" Background="#FF242424" Padding="0" >
-                            <!-- Текстбокс поиска -->
-                            <TextBox Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}"/>
-                        </Border>
+                        <!-- Правая группа: кнопка смены темы и иконка профиля -->
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" x:Name="RightHeaderGroup" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                            <!-- Кнопка для смены темы -->                            
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock HorizontalAlignment="Right" Foreground="White"> Войти</TextBlock>
+                                <TextBlock Foreground="White"> Регистрация</TextBlock>
+                            </StackPanel>
+                            <Image Source="images\avatar.png" x:Name="ProfileIcon" Style="{StaticResource ProfileImageStyle}"/>
+
+                            <!-- Иконка профиля -->
+          
+                        </StackPanel>
+
+
+                        <!-- Центральная группа: поиск с закругленными краями -->
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="30 0" >
+                            <!-- Бордер для закругления краев текстбокса -->
+                            <Border CornerRadius="5" Background="#FF242424" Padding="0" >
+                                <!-- Текстбокс поиска -->
+                                <TextBox Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}"/>
+                            </Border>
+                        </StackPanel>
+                    </DockPanel>
+
+                </Border>
+
+                <!-- Панель с жанрами -->
+                <Border Grid.Row="2" Grid.Column="2" Background="#FF12120C" CornerRadius="10" VerticalAlignment="Top">
+                    <StackPanel  Margin="5,5"  Height="264" >
+                        <TextBlock Foreground="White" Margin="5 3" FontWeight="Bold" FontSize="16">ЖАНРЫ</TextBlock>
+                        <Button Content="Экшен" Style="{StaticResource GenreSelectionStyle}"/>
+                        <Button Content="RPG" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Стратегии" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Приключения" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Симуляторы" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Гонки" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Инди" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Казуальные" Style="{StaticResource GenreSelectionStyle}" />
+                        <Button Content="Спортивные" Style="{StaticResource GenreSelectionStyle}" />
                     </StackPanel>
-                </DockPanel>
+                </Border>
+                <!-- Контент с играми -->
+                <Border Grid.Row="2" Grid.Column="0" Background="#FF12120C" CornerRadius="10"></Border>
+
             </Grid>
         </Border>
     </Grid>
