@@ -22,7 +22,19 @@ namespace ByWoggi
     {
         public MainWindow()
         {
-                InitializeComponent();
+            InitializeComponent();
+            SizeChanged += MainWindow_SizeChanged;
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        // Обработчик события изменения размера окна
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
         }
     }
 }
+
