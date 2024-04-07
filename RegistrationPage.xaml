@@ -1,0 +1,56 @@
+﻿<Page x:Class="ByWoggi.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ByWoggi"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="RegistrationPage" Foreground="White" FontFamily="Bahnschrift Light">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Margin="20" Grid.Row="0" Grid.ColumnSpan="1">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                <TextBlock Foreground="#FFE2DCDC" FontSize="24"> Регистрация</TextBlock>
+            </StackPanel>
+            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" Margin="0 0 0 7">Наша задача - сделать качественный сайт с PC играми. Команда сайта непрерывно трудится над его развитием, обновляя уже опубликованные игры и добавляя новые и старые хиты. У нас вы найдёте все новинки игр и их последние версии с выбором подходящего RePack для загрузки.</TextBlock>
+            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" Margin="0 0 0 7">Тёплое общение и обсуждение игр в комментариях создаст ламповую атмосферу. Отзывчивая команда сайта поможет решить вопросы или проблемы с играми.</TextBlock>
+            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" FontFamily="Bahnschrift Light">Регистрация на нашем сайте позволит Вам быть его полноценным участником. В случае возникновения проблем с регистрацией, обратитесь к администратору сайта.</TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="20" Grid.ColumnSpan="2">
+            <TextBlock Foreground="#B1B1B1"> Логин</TextBlock>
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20" Padding="2">
+                <TextBox x:Name="LoginTextBox" Background="#FF242424" Padding="10"  Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+            </Border>
+            <TextBlock Foreground="#B1B1B1"> Пароль</TextBlock>
+            <Border CornerRadius="5" Background="#FF242424" Width="Auto" Margin="0 0 0 20"  Padding="2">
+                <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+            </Border>
+            <TextBlock Foreground="#B1B1B1"> Повторите пароль</TextBlock>
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20" Padding="2" Cursor="IBeam">
+                <PasswordBox x:Name="PasswordTextboxRetry" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+            </Border>
+            <TextBlock Foreground="#B1B1B1">Email</TextBlock>
+
+            <Border CornerRadius="5" Background="#FF242424"  Padding="2">
+                <TextBox x:Name="EmailTextBox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+            </Border>
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 30 0 0" Padding="2" Width="300" HorizontalAlignment="Left" Cursor="Hand">
+                <Button Content="Зарегистрироваться" Padding="5"  Background="{x:Null}" Foreground="AntiqueWhite" BorderBrush="{x:Null}" Click="FullyRegButton_Click"/>
+            </Border>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

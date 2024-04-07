@@ -26,14 +26,26 @@ namespace ByWoggi
             SizeChanged += MainWindow_SizeChanged;
         }
 
-        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         // Обработчик события изменения размера окна
         private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+        }
+
+        private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AuthPopup.IsOpen = !AuthPopup.IsOpen;
+        }
+
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationContentFrame.Navigate(new Uri("RegistrationPage.xaml", UriKind.Relative));
+        }
+
+        private void LeftHeaderBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RegistrationContentFrame.Content = null;
+
         }
     }
 }
