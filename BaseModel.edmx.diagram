@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c16146fb74af4266b73ce5b8ccdb7eba" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="ByWoggiModel.Category" Width="1.5" PointX="5.625" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ByWoggiModel.Comment" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ByWoggiModel.Game" Width="1.5" PointX="1.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ByWoggiModel.Rating" Width="1.5" PointX="6.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ByWoggiModel.User" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="ByWoggiModel.FK_Game_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ByWoggiModel.FK_Comment_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="ByWoggiModel.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ByWoggiModel.FK_Rating_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
