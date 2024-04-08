@@ -186,16 +186,21 @@
     <Compile Include="Category.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="classes\AuthService.cs" />
+    <Compile Include="classes\HashingHelper.cs" />
     <Compile Include="Comment.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Game.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pages\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rating.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationPage.xaml.cs">
+    <Compile Include="pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -213,7 +218,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RegistrationPage.xaml">
+    <Page Include="pages\MainContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,7 +252,6 @@
     <None Include="BaseModel.edmx.diagram">
       <DependentUpon>BaseModel.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,11 +277,21 @@
       <DependentUpon>BaseModel.edmx</DependentUpon>
       <LastGenOutput>BaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="game_images\Cyberpunk 2077.jpg" />
+    <Resource Include="game_images\Forza Horizon 5.jpg" />
+    <Resource Include="game_images\Goat Simulator 3.jpg" />
+    <Resource Include="game_images\Jurassic World Evolution 2.jpg" />
+    <Resource Include="game_images\Millennia.jpg" />
+    <Resource Include="game_images\MX vs ATV Legends.jpg" />
+    <Resource Include="game_images\Palworld.jpg" />
+    <Resource Include="game_images\Pioneers of Pagonia.jpg" />
+    <Resource Include="game_images\Stardew Valley.jpg" />
     <Content Include="images\search.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

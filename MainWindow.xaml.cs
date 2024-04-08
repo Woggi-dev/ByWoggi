@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ByWoggi.classes;
+using ByWoggi.pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,14 +25,8 @@ namespace ByWoggi
         public MainWindow()
         {
             InitializeComponent();
-            SizeChanged += MainWindow_SizeChanged;
         }
 
-
-        // Обработчик события изменения размера окна
-        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-        }
 
         private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -46,6 +42,27 @@ namespace ByWoggi
         {
             RegistrationContentFrame.Content = null;
 
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string login = LoginTextbox.Text;
+            string pwd = PasswordTextbox.Password;
+            using (var context = new ByWoggiEntities())
+            {
+                var authService = new AuthService(context);
+
+                // Вход пользователя
+                if (authService.AuthenticateUser(login, pwd))
+                {
+                    MessageBox.Show("Вход успешен!");
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин или пароль");
+                }
+
+            }
         }
     }
 }

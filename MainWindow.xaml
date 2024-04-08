@@ -89,17 +89,17 @@
                                     <StackPanel>
                                         <TextBlock Foreground="#B1B1B1">Логин</TextBlock>
                                         <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10">
-                                            <TextBox Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                                            <TextBox x:Name="LoginTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
                                         </Border>
                                         <TextBlock Foreground="#B1B1B1">Пароль</TextBlock>
                                         <Border CornerRadius="5" Background="#FF242424">
-                                            <TextBox Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                                            <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
                                         </Border>
                                         <Border CornerRadius="5" Background="#FF242424" Width="110" Margin="0 10 0 0">
-                                            <Button Content="Войти" Width="110" Padding="5" Background="{x:Null}" Foreground="AntiqueWhite" BorderBrush="{x:Null}" Cursor="Hand"/>
+                                            <Button Content="Войти" Width="110" Padding="5" Background="{x:Null}" Foreground="AntiqueWhite" BorderBrush="{x:Null}" Cursor="Hand" Click="LoginButton_Click"/>
                                         </Border>
                                         <WrapPanel Margin="0 5 0 0">
-                                            <Button Foreground="#538CC7" Background="{x:Null}" BorderBrush="{x:Null}" Width="102" Content="Забыли пароль?" Cursor="Hand"/>
+                                            <Button Foreground="#538CC7" Background="{x:Null}" BorderBrush="{x:Null}" Width="102" Content="Забыли пароль?" Cursor="Hand" />
                                             <Button Foreground="#FFBEED87" Background="{x:Null}" BorderBrush="{x:Null}" Width="102" Content="Регистрация" Click="RegButton_Click" Cursor="Hand"/>
                                         </WrapPanel>
                                     </StackPanel>
