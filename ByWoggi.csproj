@@ -191,11 +191,14 @@
     <Compile Include="Comment.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CurrentGameContentPage.xaml.cs">
+      <DependentUpon>CurrentGameContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="pages\MainContent.xaml.cs">
-      <DependentUpon>MainContent.xaml</DependentUpon>
+    <Compile Include="pages\MainContentPage.xaml.cs">
+      <DependentUpon>MainContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rating.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -206,6 +209,10 @@
     <Compile Include="User.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Page Include="CurrentGameContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -218,7 +225,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="pages\MainContent.xaml">
+    <Page Include="pages\MainContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

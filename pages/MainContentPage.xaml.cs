@@ -16,13 +16,17 @@ using System.Windows.Shapes;
 namespace ByWoggi.pages
 {
     /// <summary>
-    /// Interaction logic for MainContent.xaml
+    /// Interaction logic for MainContentPage.xaml
     /// </summary>
-    public partial class MainContent : Page
+    public partial class MainContentPage : Page
     {
-        public MainContent()
+        private ByWoggiEntities _context;
+        public MainContentPage()
         {
             InitializeComponent();
-        }
+            _context = new ByWoggiEntities();
+            GameListView.ItemsSource = _context.Games.ToList();
+            }
+
     }
 }

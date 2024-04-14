@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:ByWoggi"
             mc:Ignorable="d"
-         Title="MainWindow" Height="1080" Width="1920" MinWidth="650" FontFamily="Bahnschrift Light" WindowState="Maximized" Foreground="#A8B3B9">
+         Title="MainWindow" Height="1080" Width="1920" MinWidth="650" FontFamily="Bahnschrift Light" WindowState="Maximized" Foreground="#A8B3B9" Loaded="Window_Loaded">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
         <!-- Стиль шапки -->
@@ -135,7 +135,10 @@
                         <Button Content="Спортивные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
                     </StackPanel>
                 </Border>
+                
                 <Border Grid.Row="2" Grid.Column="0" Background="#FF12120C" CornerRadius="10"></Border>
+
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"></Frame>
 
                 <Frame Grid.Row="2" Grid.Column="0" x:Name="RegistrationContentFrame" NavigationUIVisibility="Hidden"></Frame>
 

@@ -25,7 +25,14 @@ namespace ByWoggi
         public string description { get; set; }
         public Nullable<System.DateTime> release_date { get; set; }
         public int category_id { get; set; }
-    
+        public string imagePath
+        {
+            get
+            {
+                return $"/game_images/{name}.jpg";
+            }
+        }
+
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

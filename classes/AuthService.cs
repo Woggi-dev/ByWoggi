@@ -20,19 +20,17 @@ namespace ByWoggi.classes
         {
             if (_context.Set<User>().Any(u => u.login == login))
             {
-                // Пользователь с таким логином уже существует
                 return false;
             }
             if (_context.Set<User>().Any(u => u.email == email))
             {
-                // Пользователь с такой почтой уже существует
                 return false;
             }
 
             var newUser = new User
             {
                 login = login,
-                password = HashingHelper.HashPassword(password), // Хешируем пароль перед сохранением
+                password = HashingHelper.HashPassword(password),
                 email = email
             };
 
@@ -46,11 +44,9 @@ namespace ByWoggi.classes
             var user = _context.Set<User>().FirstOrDefault(u => u.login == login);
             if (user == null)
             {
-                // Пользователь не найден
                 return false;
             }
 
-            // Проверяем, совпадает ли хеш введённого пароля с хешем из базы данных
             return HashingHelper.HashPassword(password) == user.password;
         }
     }
