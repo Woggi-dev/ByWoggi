@@ -1,0 +1,38 @@
+﻿<Page x:Class="ByWoggi.pages.CurrentGameContentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ByWoggi.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CurrentGameContentPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок и обложка игры -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Image Source="{Binding imagePath}" Width="200" Height="300" Margin="10"/>
+                <StackPanel Margin="10">
+                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="24"/>
+                    <TextBlock Text="{Binding release_date}"  FontSize="24"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Описание игры -->
+            <TextBlock Grid.Row="1" Text="{Binding description}" TextWrapping="Wrap" Margin="10" Foreground="White"/>
+
+            <!-- Секция с особенностями игры, которую нужно дополнительно разработать -->
+            <!-- ... -->
+
+            <!-- Кнопка скачивания (если это применимо) -->
+            <Button Grid.Row="2" Content="Скачать" HorizontalAlignment="Right" Margin="10"/>
+
+        </Grid>
+    </Grid>
+</Page>

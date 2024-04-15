@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:ByWoggi"
             mc:Ignorable="d"
-         Title="MainWindow" Height="1080" Width="1920" MinWidth="650" FontFamily="Bahnschrift Light" WindowState="Maximized" Foreground="#A8B3B9" Loaded="Window_Loaded">
+         Title="MainWindow" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized" Foreground="#A8B3B9">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
         <!-- Стиль шапки -->
@@ -54,7 +54,7 @@
                     <!-- Ряды под шапку, основной контент с играми, разделитель и панель с выбором жанров игр  -->
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <!-- Колонки под шапку, основной контент с играми, разделитель и панель с выбором жанров игр  -->
@@ -82,7 +82,7 @@
                         </StackPanel>
 
                         <!-- Правая группа: профиль, регистрация, авторизация -->
-                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="RegistrationLogIn_PreviewMouseLeftButtonDown" Cursor="Hand" Margin="15 0 0 0">
                             <!-- Всплывающее меню -->
                             <Popup IsOpen="{Binding IsChecked, ElementName=LoginToggleButton}" x:Name="AuthPopup" PlacementTarget="{Binding ElementName=RightHeaderGroup}" Placement="Bottom" StaysOpen="True">
                                 <Border Background="#FF12120C" CornerRadius="0" Padding="10">
@@ -113,7 +113,7 @@
                         </StackPanel>
 
                         <!-- Текстбокс поиска -->
-                        <Border CornerRadius="5" Background="#FF242424" Padding="1" MaxWidth="250" MaxHeight="35">
+                        <Border CornerRadius="5" Background="#FF242424" Padding="1" MaxWidth="300" MaxHeight="35">
                             <TextBox Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}" FontFamily="Bahnschrift Light" Cursor="IBeam"/>
                         </Border>
                     </DockPanel>
@@ -121,9 +121,9 @@
                 </Border>
 
                 <!-- Панель с жанрами -->
-                <Border Grid.Row="2" Grid.Column="2" Background="#FF12120C" CornerRadius="10" VerticalAlignment="Top" Cursor="Hand">
-                    <StackPanel  Margin="5,5">
-                        <TextBlock Foreground="White" Margin="5 3" FontWeight="Bold" FontSize="16">ЖАНРЫ</TextBlock>
+                <Border Grid.Row="2" Grid.Column="2" Background="#FF12120C" CornerRadius="10" VerticalAlignment="Top">
+                    <StackPanel Margin="5,5">
+                        <TextBlock Foreground="White" Margin="5 3" FontSize="18">Жанры</TextBlock>
                         <Button Content="Экшен" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand"/>
                         <Button Content="RPG" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
                         <Button Content="Стратегии" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
@@ -135,14 +135,34 @@
                         <Button Content="Спортивные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
                     </StackPanel>
                 </Border>
-                
                 <Border Grid.Row="2" Grid.Column="0" Background="#FF12120C" CornerRadius="10"></Border>
-
-                <Frame Grid.Row="2" Grid.Column="0" x:Name="MainContentFrame" NavigationUIVisibility="Hidden"></Frame>
-
-                <Frame Grid.Row="2" Grid.Column="0" x:Name="RegistrationContentFrame" NavigationUIVisibility="Hidden"></Frame>
-
                 <!-- Контент с играми -->
+
+                <ItemsControl x:Name="GameListView" ItemsSource="{Binding Games}" Grid.Row="2" Grid.Column="0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel PreviewMouseLeftButtonDown="CurrentGame_PreviewMouseLeftButtonDown" Cursor="Hand">
+                                    <Image Grid.Row="0" Source="{Binding imagePath}"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding name}" TextWrapping="Wrap" Foreground="White" Margin="0 5 0 0" FontSize="16" TextAlignment="Left" />
+                                </StackPanel>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+               
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="RegistrationContentFrame" NavigationUIVisibility="Hidden"></Frame>
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="CurrentGameContentPage" NavigationUIVisibility="Hidden"></Frame>
 
             </Grid>
         </Border>

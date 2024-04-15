@@ -25,11 +25,17 @@ namespace ByWoggi
         public string description { get; set; }
         public Nullable<System.DateTime> release_date { get; set; }
         public int category_id { get; set; }
+        private string _imagePath;
         public string imagePath
         {
             get
             {
                 return $"/game_images/{name}.jpg";
+            }
+            set 
+            {
+                _imagePath = value;
+            
             }
         }
 
