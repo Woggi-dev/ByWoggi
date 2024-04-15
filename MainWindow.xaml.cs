@@ -2,6 +2,7 @@
 using ByWoggi.pages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,27 +23,32 @@ namespace ByWoggi
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private ByWoggiEntities _context;
         public MainWindow()
         {
             InitializeComponent();
-
+            _context = new ByWoggiEntities();
+            GameListView.ItemsSource = _context.Games.ToList();
         }
 
 
-        private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void RegistrationLogIn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AuthPopup.IsOpen = !AuthPopup.IsOpen;
         }
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
+            CurrentGameContentPage.Content = null;
             RegistrationContentFrame.Navigate(new Uri("pages/RegistrationPage.xaml", UriKind.Relative));
         }
 
+        // Нажатие на главную иконку и логотип лося
         private void LeftHeaderBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             RegistrationContentFrame.Content = null;
+            CurrentGameContentPage.Content = null;
+            GameListView.Visibility = Visibility.Visible;
 
         }
 
@@ -65,9 +71,17 @@ namespace ByWoggi
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void CurrentGame_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MainContentFrame.Navigate(new Uri("pages/MainContentPage.xaml", UriKind.Relative));
+            GameListView.Visibility = Visibility.Collapsed;
+            var stackPanel = (StackPanel)sender;
+            var game = (Game)stackPanel.DataContext;
+
+            // Создаем экземпляр страницы с параметрами
+            var gameContentPage = new CurrentGameContentPage(game.imagePath, game.name, game.description, game.release_date);
+
+            // Теперь устанавливаем созданный экземпляр страницы в Frame
+            CurrentGameContentPage.Content = gameContentPage; // CurrentGameContentFrame это имя Frame в вашем XAML
 
         }
     }
