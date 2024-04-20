@@ -18,36 +18,33 @@ namespace ByWoggi.classes
 
         public bool RegisterUser(string login, string password, string email)
         {
-            if (_context.Set<User>().Any(u => u.login == login))
+            if (!(_context.Set<User>().Any(u => u.login == login)
+                || _context.Set<User>().Any(u => u.email == email)))
             {
-                return false;
+                var newUser = new User
+                {
+                    login = login,
+                    password = HashingHelper.HashPassword(password),
+                    email = email
+                };
+
+                _context.Set<User>().Add(newUser);
+                _context.SaveChanges();
+                return true;
             }
-            if (_context.Set<User>().Any(u => u.email == email))
-            {
-                return false;
-            }
 
-            var newUser = new User
-            {
-                login = login,
-                password = HashingHelper.HashPassword(password),
-                email = email
-            };
-
-            _context.Set<User>().Add(newUser);
-            _context.SaveChanges();
-
-            return true;
+            return false;
         }
-        public bool AuthenticateUser(string login, string password)
+        public User AuthenticateUser(string login, string password)
         {
             var user = _context.Set<User>().FirstOrDefault(u => u.login == login);
-            if (user == null)
+
+            if (user != null && HashingHelper.HashPassword(password) == user.password)
             {
-                return false;
+                return user;
             }
 
-            return HashingHelper.HashPassword(password) == user.password;
+            return null;
         }
     }
 }

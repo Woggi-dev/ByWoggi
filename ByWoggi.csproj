@@ -188,6 +188,8 @@
     </Compile>
     <Compile Include="classes\AuthService.cs" />
     <Compile Include="classes\HashingHelper.cs" />
+    <Compile Include="classes\MainViewModel.cs" />
+    <Compile Include="classes\UserSession.cs" />
     <Compile Include="Comment.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
@@ -252,6 +254,15 @@
     <None Include="BaseModel.edmx.diagram">
       <DependentUpon>BaseModel.edmx</DependentUpon>
     </None>
+    <None Include="game_torrent\Cyberpunk.torrent" />
+    <None Include="game_torrent\Forza Horizon 5.torrent" />
+    <None Include="game_torrent\Goat Simulator 3.torrent" />
+    <None Include="game_torrent\Jurassic World Evolution 2.torrent" />
+    <None Include="game_torrent\Millenia.torrent" />
+    <None Include="game_torrent\MX vs ATV Legends.torrent" />
+    <None Include="game_torrent\PalWorld.torrent" />
+    <None Include="game_torrent\Pioneers of Pagonia.torrent" />
+    <None Include="game_torrent\Stardew Valley.torrent" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,6 +297,7 @@
     <Resource Include="game_images\Palworld.jpg" />
     <Resource Include="game_images\Pioneers of Pagonia.jpg" />
     <Resource Include="game_images\Stardew Valley.jpg" />
+    <Resource Include="images\exit.png" />
     <Content Include="images\search.png" />
   </ItemGroup>
   <ItemGroup>

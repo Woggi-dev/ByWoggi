@@ -3,9 +3,9 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:local="clr-namespace:ByWoggi"
-            mc:Ignorable="d"
-         Title="MainWindow" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized" Foreground="#A8B3B9">
+            xmlns:local="clr-namespace:ByWoggi" xmlns:classes="clr-namespace:ByWoggi.classes" d:DataContext="{d:DesignInstance Type=classes:MainViewModel}"
+        mc:Ignorable="d"
+         Title="MainWindow" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
         <!-- Стиль шапки -->
@@ -35,7 +35,7 @@
             <Setter Property="FontFamily" Value="Bahnschrift"/>
             <Setter Property="Height" Value="31"/>
             <Setter Property="SelectionBrush" Value="{x:Null}"/>
-            <Setter Property="MinWidth" Value="200"/>
+            <Setter Property="MinWidth" Value="21"/>
         </Style>
         <Style x:Key="GenreSelectionStyle" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
@@ -64,7 +64,7 @@
                 </Grid.ColumnDefinitions>
                 <!-- Разделитель контента  -->
                 <Border Grid.Row="1" Grid.ColumnSpan="3" Background="#FF242424"></Border>
-                <Border Grid.Column="1" Grid.Row="2" Background="#FF242424"></Border>
+                <Border Grid.Column="1" Grid.Row="2"/>
 
                 <!-- border для прикрепления Popup меню  -->
                 <Border Grid.Row="0" Grid.Column="2" x:Name="RightHeaderGroup" Margin="0 0 0 -20"/>
@@ -85,7 +85,7 @@
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="RegistrationLogIn_PreviewMouseLeftButtonDown" Cursor="Hand" Margin="15 0 0 0">
                             <!-- Всплывающее меню -->
                             <Popup IsOpen="{Binding IsChecked, ElementName=LoginToggleButton}" x:Name="AuthPopup" PlacementTarget="{Binding ElementName=RightHeaderGroup}" Placement="Bottom" StaysOpen="True">
-                                <Border Background="#FF12120C" CornerRadius="0" Padding="10">
+                                <Border Height="195" Padding="10" Background="#FF12120C" BorderThickness="0,0,0,0">
                                     <StackPanel>
                                         <TextBlock Foreground="#B1B1B1">Логин</TextBlock>
                                         <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10">
@@ -105,16 +105,36 @@
                                     </StackPanel>
                                 </Border>
                             </Popup>
-                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock HorizontalAlignment="Right"  Foreground="White" FontSize="15" > Войти</TextBlock>
-                                <TextBlock  Foreground="White" FontSize="15">Регистрация</TextBlock>
+
+                            <Popup x:Name="UserPopup" IsOpen="{Binding IsChecked, ElementName=ProfileToggleButton}"  Placement="Bottom" PlacementTarget="{Binding ElementName=RightHeaderGroup}" StaysOpen="True">
+                                <Border Background="#FF12120C" Height="120" Width="180" Padding="10" BorderThickness="1,1,1,1" BorderBrush="#FF12120C">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="images/avatar.png" Width="Auto" MaxHeight="55" HorizontalAlignment="Left"/>
+                                            <StackPanel Orientation="Vertical" Margin="7">
+                                                <TextBlock Text="{Binding UserDisplay}" Foreground="White" Margin="5 0 0 0" FontSize="22"/>
+                                                <TextBlock Text="Мой профиль"  Foreground="LightGray" Margin="5 1 0 0" FontSize="13"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                                <Image Source="images/exit.png" MaxHeight="20" Margin="0 0 4 0"/>
+                                                <TextBlock Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="0 4 0 0"> Выйти</TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Border>
+                            </Popup>
+                            <StackPanel x:Name="AuthorizationGroup" VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock Text="{Binding UserDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Foreground="White" FontSize="17"/>
                             </StackPanel>
                             <Image Source="images\avatar.png" x:Name="ProfileIcon" Style="{StaticResource ProfileImageStyle}" Height="41" Width="41"/>
                         </StackPanel>
 
                         <!-- Текстбокс поиска -->
-                        <Border CornerRadius="5" Background="#FF242424" Padding="1" MaxWidth="300" MaxHeight="35">
-                            <TextBox Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}" FontFamily="Bahnschrift Light" Cursor="IBeam"/>
+                        <Border CornerRadius="5" Background="#FF242424" Padding="1" MaxWidth="300" MaxHeight="33">
+                            <TextBox x:Name="SearchTextbox" Text="Поиск..." Style="{StaticResource SearchTextBoxStyle}" FontFamily="Bahnschrift Light" Cursor="IBeam" KeyDown="SearchTextBox_KeyDown" GotFocus="SearchTextbox_GotFocus" LostFocus="SearchTextbox_LostFocus"/>
                         </Border>
                     </DockPanel>
 
@@ -123,16 +143,16 @@
                 <!-- Панель с жанрами -->
                 <Border Grid.Row="2" Grid.Column="2" Background="#FF12120C" CornerRadius="10" VerticalAlignment="Top">
                     <StackPanel Margin="5,5">
-                        <TextBlock Foreground="White" Margin="5 3" FontSize="18">Жанры</TextBlock>
-                        <Button Content="Экшен" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand"/>
-                        <Button Content="RPG" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Стратегии" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Приключения" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Симуляторы" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Гонки" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Инди" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Казуальные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
-                        <Button Content="Спортивные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" />
+                        <TextBlock Foreground="White" Margin="5 3" FontSize="20">Жанры</TextBlock>
+                        <Button Content="Экшен" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByActionGames"/>
+                        <Button Content="RPG" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByRPGGames" />
+                        <Button Content="Стратегии" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByStrategyGames" />
+                        <Button Content="Приключения" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByAdventureGames" />
+                        <Button Content="Симуляторы" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortBySimulationGames" />
+                        <Button Content="Гонки" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByRaceGames" />
+                        <Button Content="Инди" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByIndieGames" />
+                        <Button Content="Казуальные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortByCasualGames" />
+                        <Button Content="Спортивные" Style="{StaticResource GenreSelectionStyle}" Cursor="Hand" Click="SortBySportGames" />
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="0" Background="#FF12120C" CornerRadius="10"></Border>
@@ -160,7 +180,7 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-               
+
                 <Frame Grid.Row="2" Grid.Column="0" x:Name="RegistrationContentFrame" NavigationUIVisibility="Hidden"></Frame>
                 <Frame Grid.Row="2" Grid.Column="0" x:Name="CurrentGameContentPage" NavigationUIVisibility="Hidden"></Frame>
 

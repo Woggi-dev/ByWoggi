@@ -19,7 +19,7 @@ namespace ByWoggi
         {
             this.Comments = new HashSet<Comment>();
             this.Ratings = new HashSet<Rating>();
-        }
+        }   
     
         public int user_id { get; set; }
         public string login { get; set; }
