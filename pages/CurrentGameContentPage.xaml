@@ -6,32 +6,30 @@
       xmlns:local="clr-namespace:ByWoggi.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CurrentGameContentPage">
+      Title="CurrentGameContentPage" Foreground="White">
 
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- Заголовок и обложка игры -->
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Image Source="{Binding imagePath}" Width="200" Height="300" Margin="10"/>
                 <StackPanel Margin="10">
-                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="24"/>
-                    <TextBlock Text="{Binding release_date}"  FontSize="24"/>
+                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="24" />
+                    <TextBlock Text="{Binding release_date}"  FontSize="24" />
                 </StackPanel>
             </StackPanel>
 
-            <!-- Описание игры -->
-            <TextBlock Grid.Row="1" Text="{Binding description}" TextWrapping="Wrap" Margin="10" Foreground="White"/>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="{Binding description}" TextWrapping="Wrap" Margin="10"/>
+                <Button Content="Скачать торрент" Margin="10" MaxWidth="250" MinHeight="40" Cursor="Hand" Click="Download_Click"/>
+            </StackPanel>
 
-            <!-- Секция с особенностями игры, которую нужно дополнительно разработать -->
-            <!-- ... -->
-
-            <!-- Кнопка скачивания (если это применимо) -->
-            <Button Grid.Row="2" Content="Скачать" HorizontalAlignment="Right" Margin="10"/>
 
         </Grid>
     </Grid>
