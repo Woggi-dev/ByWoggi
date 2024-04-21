@@ -14,6 +14,8 @@
         <AssociationConnector Association="ByWoggiModel.FK_Comment_Game" ManuallyRouted="false" />
         <AssociationConnector Association="ByWoggiModel.FK_Comment_User" ManuallyRouted="false" />
         <AssociationConnector Association="ByWoggiModel.FK_Rating_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ByWoggiModel.sysdiagram" Width="1.5" PointX="8.625" PointY="1.5" />
+        <AssociationConnector Association="ByWoggiModel.FK_Rating_Game" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

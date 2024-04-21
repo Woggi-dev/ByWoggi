@@ -21,6 +21,8 @@ namespace ByWoggi.classes
             OnLoginStatusChanged?.Invoke();
         }
 
+
+
         public void SignOut()
         {
             CurrentUser = null; // Очищаем информацию о пользователе при выходе

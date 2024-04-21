@@ -6,31 +6,61 @@
       xmlns:local="clr-namespace:ByWoggi.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CurrentGameContentPage" Foreground="White">
+      Title="CurrentGameContentPage" Foreground="#FFE2DCDC">
+
 
     <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Width" Value="1"/>
+                    <Setter Property="Background" Value="#FF242424"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid>
+                                    <Border CornerRadius="1" Background="#FF2E3B55"/>
+                                    <Track Name="PART_Track" IsDirectionReversed="true">
+                                        <Track.Thumb>
+                                            <Thumb Background="#FF12120C" BorderThickness="5"/>
+                                        </Track.Thumb>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Opacity="0"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Opacity="0"/>
+                                        </Track.DecreaseRepeatButton>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ScrollViewer.Resources>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <!-- Заголовок и обложка игры -->
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Image Source="{Binding imagePath}" Width="200" Height="300" Margin="10"/>
-                <StackPanel Margin="10">
-                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="24" />
-                    <TextBlock Text="{Binding release_date}"  FontSize="24" />
+                <!-- Заголовок и обложка игры -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Image Source="{Binding imagePath}" Width="200" Height="300" Margin="10"/>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="{Binding name}" FontSize="24" />
+                        <TextBlock Text="{Binding release_date}"  FontSize="24" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <StackPanel Grid.Row="1">
-                <TextBlock Text="{Binding description}" TextWrapping="Wrap" Margin="10"/>
-                <Button Content="Скачать торрент" Margin="10" MaxWidth="250" MinHeight="40" Cursor="Hand" Click="Download_Click"/>
-            </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="{Binding description}" TextWrapping="Wrap" Margin="10" FontSize="14"/>
+                    <Border CornerRadius="5" Background="#6DC537" Margin="0 30 0 0" Padding="2" Width="300" HorizontalAlignment="Center" Cursor="Hand">
+                        <Button Content="Скачать торрент" Padding="5"   Foreground="AntiqueWhite" BorderBrush="{x:Null}" Click="Download_Click" Background="{x:Null}"/>
+                    </Border>
+                </StackPanel>
 
-
-        </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

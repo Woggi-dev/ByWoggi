@@ -19,7 +19,7 @@ namespace ByWoggi
             : base("name=ByWoggiEntities")
         {
         }
-        
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

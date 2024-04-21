@@ -18,6 +18,7 @@ namespace ByWoggi
         public Game()
         {
             this.Comments = new HashSet<Comment>();
+            this.Ratings = new HashSet<Rating>();
         }
     
         public int game_id { get; set; }
@@ -25,22 +26,25 @@ namespace ByWoggi
         public string description { get; set; }
         public Nullable<System.DateTime> release_date { get; set; }
         public int category_id { get; set; }
+
         private string _imagePath;
+
         public string imagePath
         {
             get
             {
                 return $"/game_images/{name}.jpg";
             }
-            set 
+            set
             {
                 _imagePath = value;
-            
             }
         }
-
+            
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

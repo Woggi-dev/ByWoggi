@@ -3,8 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:local="clr-namespace:ByWoggi" xmlns:classes="clr-namespace:ByWoggi.classes" d:DataContext="{d:DesignInstance Type=classes:MainViewModel}"
-        mc:Ignorable="d"
+                xmlns:local="clr-namespace:ByWoggi" xmlns:classes="clr-namespace:ByWoggi.classes" d:DataContext="{d:DesignInstance Type=classes:MainViewModel}"
+            mc:Ignorable="d"
          Title="MainWindow" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
@@ -82,7 +82,7 @@
                         </StackPanel>
 
                         <!-- Правая группа: профиль, регистрация, авторизация -->
-                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="RegistrationLogIn_PreviewMouseLeftButtonDown" Cursor="Hand" Margin="15 0 0 0">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="RightHeaderGroup_PreviewMouseLeftButtonDown" Cursor="Hand" Margin="15 0 0 0">
                             <!-- Всплывающее меню -->
                             <Popup IsOpen="{Binding IsChecked, ElementName=LoginToggleButton}" x:Name="AuthPopup" PlacementTarget="{Binding ElementName=RightHeaderGroup}" Placement="Bottom" StaysOpen="True">
                                 <Border Height="195" Padding="10" Background="#FF12120C" BorderThickness="0,0,0,0">
@@ -110,14 +110,14 @@
                                 <Border Background="#FF12120C" Height="120" Width="180" Padding="10" BorderThickness="1,1,1,1" BorderBrush="#FF12120C">
                                     <StackPanel>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="images/avatar.png" Width="Auto" MaxHeight="55" HorizontalAlignment="Left"/>
-                                            <StackPanel Orientation="Vertical" Margin="7">
-                                                <TextBlock Text="{Binding UserDisplay}" Foreground="White" Margin="5 0 0 0" FontSize="22"/>
+                                            <Image Source="{Binding UserProfileImage}" Width="Auto" MaxHeight="55" HorizontalAlignment="Left"/>
+                                            <StackPanel Orientation="Vertical" Margin="7" PreviewMouseLeftButtonDown="UserProfilePage_PreviewMouseLeftButtonDown" Cursor="Hand">
+                                                <TextBlock Text="{Binding UserLoginDisplay}" Foreground="White" Margin="5 0 0 0" FontSize="22"/>
                                                 <TextBlock Text="Мой профиль"  Foreground="LightGray" Margin="5 1 0 0" FontSize="13"/>
                                             </StackPanel>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left">
-                                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0" Cursor="Hand" PreviewMouseLeftButtonDown="UserProfileLogOut_PreviewMouseLeftButtonDown">
                                                 <Image Source="images/exit.png" MaxHeight="20" Margin="0 0 4 0"/>
                                                 <TextBlock Foreground="White" FontSize="15" HorizontalAlignment="Left" Margin="0 4 0 0"> Выйти</TextBlock>
                                             </StackPanel>
@@ -127,9 +127,9 @@
                                 </Border>
                             </Popup>
                             <StackPanel x:Name="AuthorizationGroup" VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock Text="{Binding UserDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Foreground="White" FontSize="17"/>
+                                <TextBlock Text="{Binding UserLoginDisplay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Foreground="White" FontSize="17"/>
                             </StackPanel>
-                            <Image Source="images\avatar.png" x:Name="ProfileIcon" Style="{StaticResource ProfileImageStyle}" Height="41" Width="41"/>
+                            <Image Source="{Binding UserProfileImage}" x:Name="ProfileIcon" Style="{StaticResource ProfileImageStyle}" Height="41" Width="41"/>
                         </StackPanel>
 
                         <!-- Текстбокс поиска -->
@@ -181,8 +181,7 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
 
-                <Frame Grid.Row="2" Grid.Column="0" x:Name="RegistrationContentFrame" NavigationUIVisibility="Hidden"></Frame>
-                <Frame Grid.Row="2" Grid.Column="0" x:Name="CurrentGameContentPage" NavigationUIVisibility="Hidden"></Frame>
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="MainContent" NavigationUIVisibility="Hidden"></Frame>
 
             </Grid>
         </Border>

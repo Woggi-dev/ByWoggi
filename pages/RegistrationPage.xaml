@@ -21,11 +21,11 @@
 
         <StackPanel Margin="20" Grid.Row="0" Grid.ColumnSpan="1">
             <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
-                <TextBlock Foreground="#FFE2DCDC" FontSize="24"> Регистрация</TextBlock>
+                <TextBlock  FontSize="24"> Регистрация</TextBlock>
             </StackPanel>
-            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" Margin="0 0 0 7">Наша задача - сделать качественное приложение с PC играми. Команда приложения непрерывно трудится над его развитием, обновляя уже опубликованные игры и добавляя новые и старые хиты. У нас вы найдёте все новинки игр и их последние версии с выбором подходящего RePack для загрузки.</TextBlock>
-            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" Margin="0 0 0 7">Тёплое общение и обсуждение игр в комментариях создаст ламповую атмосферу. Отзывчивая команда приложения поможет решить вопросы или проблемы с играми.</TextBlock>
-            <TextBlock TextWrapping="Wrap" Foreground="#FFE2DCDC" FontSize="16" FontFamily="Bahnschrift Light">Регистрация в нашем приложении позволит Вам быть его полноценным участником. В случае возникновения проблем с регистрацией, обратитесь к администратору приложения.</TextBlock>
+            <TextBlock TextWrapping="Wrap"  FontSize="16" Margin="0 0 0 7">Наша задача - сделать качественное приложение с PC играми. Команда приложения непрерывно трудится над его развитием, обновляя уже опубликованные игры и добавляя новые и старые хиты. У нас вы найдёте все новинки игр и их последние версии с выбором подходящего RePack для загрузки.</TextBlock>
+            <TextBlock TextWrapping="Wrap" FontSize="16" Margin="0 0 0 7">Тёплое общение и обсуждение игр в комментариях создаст ламповую атмосферу. Отзывчивая команда приложения поможет решить вопросы или проблемы с играми.</TextBlock>
+            <TextBlock TextWrapping="Wrap"  FontSize="16" FontFamily="Bahnschrift Light">Регистрация в нашем приложении позволит Вам быть его полноценным участником. В случае возникновения проблем с регистрацией, обратитесь к администратору приложения.</TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="20" Grid.ColumnSpan="2">
@@ -34,7 +34,7 @@
                 <TextBox x:Name="LoginTextBox" Background="#FF242424" Padding="10"  Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
             </Border>
             <TextBlock Foreground="#B1B1B1"> Пароль</TextBlock>
-            <Border CornerRadius="5" Background="#FF242424" Width="Auto" Margin="0 0 0 20"  Padding="2">
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20"  Padding="2">
                 <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
             </Border>
             <TextBlock Foreground="#B1B1B1"> Повторите пароль</TextBlock>
