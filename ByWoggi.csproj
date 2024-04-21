@@ -186,10 +186,12 @@
     <Compile Include="Category.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="classes\AuthService.cs" />
+    <Compile Include="classes\UserService.cs" />
     <Compile Include="classes\HashingHelper.cs" />
+    <Compile Include="classes\ImageConverter.cs" />
     <Compile Include="classes\MainViewModel.cs" />
     <Compile Include="classes\UserSession.cs" />
+    <Compile Include="classes\TextboxValidation.cs" />
     <Compile Include="Comment.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
@@ -198,6 +200,9 @@
     </Compile>
     <Compile Include="pages\CurrentGameContentPage.xaml.cs">
       <DependentUpon>CurrentGameContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rating.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -225,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\UserProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

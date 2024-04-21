@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ByWoggi.classes
 {
@@ -15,18 +11,28 @@ namespace ByWoggi.classes
         public UserSession userSession; 
 
         // Свойство для отображения имени пользователя или кнопок "Войти/Регистрация"
-        private string _userDisplay;
+        private string _userLoginDisplay;
+        private BitmapImage _userProfileImage;
 
-        public string UserDisplay
+        public string UserLoginDisplay
         {
-            get { return _userDisplay; }
+            get { return _userLoginDisplay; }
             set
             {
-                _userDisplay = value;
-                OnPropertyChanged(nameof(UserDisplay));
+                _userLoginDisplay = value;
+                OnPropertyChanged(nameof(UserLoginDisplay));
             }
         }
 
+        public BitmapImage UserProfileImage
+        {
+            get { return _userProfileImage; }
+            set
+            {
+                _userProfileImage = value;
+                OnPropertyChanged(nameof(UserProfileImage));
+            }
+        }
 
         // Конструктор
         public MainViewModel(UserSession userSession)
@@ -42,11 +48,13 @@ namespace ByWoggi.classes
         {
             if (userSession.IsAuthenticated)
             {
-                UserDisplay = userSession.CurrentUser.login; // Имя пользователя для отображения
+                UserLoginDisplay = userSession.CurrentUser.login; // Имя пользователя для отображения
+                UserProfileImage = ImageConverter.ByteArrayToImage(userSession.CurrentUser.profile_image);
             }
             else
             {
-                UserDisplay = "Авторизация"; // Текст кнопок для отображения
+                UserLoginDisplay = "Авторизация"; // Текст кнопок для отображения
+                UserProfileImage = new BitmapImage(new Uri("/images/avatar.png", UriKind.RelativeOrAbsolute));
             }
         }
 

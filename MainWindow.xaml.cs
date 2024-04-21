@@ -49,7 +49,7 @@ namespace ByWoggi
             GameListView.ItemsSource = _context.Games.Where(g => g.category_id == genreCategoryId).ToList();
         }
 
-        private void RegistrationLogIn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void RightHeaderGroup_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!_userSession.IsAuthenticated)
             {
@@ -61,16 +61,16 @@ namespace ByWoggi
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            CurrentGameContentPage.Content = null;
+            MainContent.Content = null;
             AuthPopup.IsOpen = !AuthPopup.IsOpen;
-            RegistrationContentFrame.Navigate(new Uri("pages/RegistrationPage.xaml", UriKind.Relative));
+            MainContent.Navigate(new Uri("pages/RegistrationPage.xaml", UriKind.Relative));
         }
 
         // Нажатие на главную иконку и логотип лося
         private void LeftHeaderBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            RegistrationContentFrame.Content = null;
-            CurrentGameContentPage.Content = null;
+            MainContent.Content = null;
+            MainContent.Content = null;
             GameListView.Visibility = Visibility.Visible;
             PrintAllGames();
 
@@ -80,7 +80,7 @@ namespace ByWoggi
         {
             using (var context = new ByWoggiEntities())
             {
-                var authService = new AuthService(_context);
+                var authService = new UserService(_context);
                 var user = authService.AuthenticateUser(LoginTextbox.Text, PasswordTextbox.Password);
 
                 if (user == null)
@@ -90,7 +90,7 @@ namespace ByWoggi
                 }
 
                 _mainViewModel.userSession.SignIn(user);
-                RegistrationContentFrame.Content = null;
+                MainContent.Content = null;
                 AuthPopup.IsOpen = false;
 
             }
@@ -107,7 +107,7 @@ namespace ByWoggi
 
             var gameContentPage = new CurrentGameContentPage(game.imagePath, game.name, game.description, game.release_date);
 
-            CurrentGameContentPage.Content = gameContentPage;
+            MainContent.Content = gameContentPage;
 
         }
 
@@ -170,7 +170,7 @@ namespace ByWoggi
                 if (game != null)
                 {
                     GameListView.Visibility = Visibility.Collapsed;
-                    CurrentGameContentPage.Navigate(new CurrentGameContentPage(game.imagePath, game.name, game.description, game.release_date));
+                    MainContent.Navigate(new CurrentGameContentPage(game.imagePath, game.name, game.description, game.release_date));
                 }
                 else
                 {
@@ -187,6 +187,19 @@ namespace ByWoggi
         private void SearchTextbox_LostFocus(object sender, RoutedEventArgs e)
         {
             SearchTextbox.Text = "Поиск...";
+        }
+
+        private void UserProfilePage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainContent.Navigate(new UserProfilePage(_userSession));
+            GameListView.Visibility = Visibility.Collapsed;
+
+
+        }
+        private void UserProfileLogOut_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _mainViewModel.userSession.SignOut();
+            UserPopup.IsOpen = false;
         }
     }
 }

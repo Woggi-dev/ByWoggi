@@ -17,5 +17,13 @@ namespace ByWoggi.classes
                 return BitConverter.ToString(hashedBytes).Replace("-", "").ToLowerInvariant();
             }
         }
+        public static bool IsHashedWithSHA256(string input)
+        {
+            // Проверяем, соответствует ли строка длине хеша SHA256
+            if (input.Length != 64) return false;
+
+            // Проверяем, состоит ли строка только из допустимых hex-символов
+            return input.All(c => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f'));
+        }
     }
 }

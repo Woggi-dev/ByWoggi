@@ -34,38 +34,18 @@ namespace ByWoggi
             string login = LoginTextBox.Text;
             string pwd = PasswordTextbox.Password;
             string email = EmailTextBox.Text;
-            // Проверка валидности логина
-            if (!Regex.IsMatch(login, @"^[a-zA-Z0-9]{3,}$"))
-            {
-                MessageBox.Show("Логин должен содержать минимум 3 символа, без пробелов, русских букв и спецсимволов");
-                return;
-            }
-            // Проверка валидности пароля
-            else if (!Regex.IsMatch(pwd, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{7,}$"))
-            {
-                MessageBox.Show("Пароль должен содержать минимум 7 символов с заглавными и маленькими буквами и спецсимволами, без пробелов и русских букв!");
-                return;
-            }
-            // Проверка идентичности паролей
-            else if (pwd != PasswordTextboxRetry.Password)
-            {
-                MessageBox.Show("Пароли должны совпадать!");
-                return;
 
-            }
-            // Проверка валидность Email
-            else if (!Regex.IsMatch(email, @"^[^@\s]+@(yandex\.ru|mail\.ru|gmail\.com)$"))
+            if (!TextboxValidation.areAllTxbsValid(login, pwd, PasswordTextboxRetry.Password, email))
             {
-                MessageBox.Show("Невалидный Email!");
                 return;
             }
 
             // Проверка валидности успешна - процесс регистрации
             using (var context = new ByWoggiEntities())
             {
-                var authService = new AuthService(context);
+                var authService = new UserService(context);
 
-                if (authService.RegisterUser(login, pwd, email))
+                if (authService.RegisterUser(login, pwd, email, ImageConverter.ImageToByteArray(new BitmapImage(new Uri("pack://application:,,,/images/avatar.png", UriKind.RelativeOrAbsolute)))))
                 {
                     MessageBox.Show("Регистрация успешна!");
                 }
