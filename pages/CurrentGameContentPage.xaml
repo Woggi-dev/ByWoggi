@@ -6,23 +6,27 @@
       xmlns:local="clr-namespace:ByWoggi.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CurrentGameContentPage" Foreground="#FFE2DCDC">
+      Title="CurrentGameContentPage" Foreground="White">
 
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ScrollViewer.Resources>
                 <Style TargetType="ScrollBar">
-                    <Setter Property="Width" Value="1"/>
-                    <Setter Property="Background" Value="#FF242424"/>
+                    <Setter Property="Width" Value="5"/>
+                    <!-- Сделаем полосу прокрутки тоньше -->
+                    <Setter Property="Background" Value="Transparent"/>
+                    <!-- Прозрачный фон за полосой прокрутки -->
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ScrollBar">
                                 <Grid>
-                                    <Border CornerRadius="1" Background="#FF2E3B55"/>
+                                    <Border CornerRadius="2.5" Background="#FF1A1A1A"/>
+                                    <!-- Подберем цвет и скругление -->
                                     <Track Name="PART_Track" IsDirectionReversed="true">
                                         <Track.Thumb>
-                                            <Thumb Background="#FF12120C" BorderThickness="5"/>
+                                            <Thumb Background="#FF636363" BorderBrush="#FF303030" BorderThickness="0"/>
+                                            <!-- Подберем цвет бегунка и уберем границу -->
                                         </Track.Thumb>
                                         <Track.IncreaseRepeatButton>
                                             <RepeatButton Opacity="0"/>
@@ -54,9 +58,9 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <TextBlock Text="{Binding description}" TextWrapping="Wrap" Margin="10" FontSize="14"/>
-                    <Border CornerRadius="5" Background="#6DC537" Margin="0 30 0 0" Padding="2" Width="300" HorizontalAlignment="Center" Cursor="Hand">
-                        <Button Content="Скачать торрент" Padding="5"   Foreground="AntiqueWhite" BorderBrush="{x:Null}" Click="Download_Click" Background="{x:Null}"/>
+                    <TextBlock Text="{Binding description}" TextWrapping="Wrap" Margin="10" FontSize="16"/>
+                    <Border CornerRadius="5" Background="#6DC537" Margin="0 20 0 0" Padding="2" Width="300" PreviewMouseLeftButtonDown="Download_Click" HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Top">
+                        <Button Content="Скачать торрент" Padding="5" Width="300" Foreground="AntiqueWhite" BorderBrush="{x:Null}"  Background="{x:Null}"/>
                     </Border>
                 </StackPanel>
 

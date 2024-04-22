@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ByWoggi.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
-      Title="UserProfilePage" Foreground="#FFE2DCDC" >  
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="UserProfilePage" Foreground="#FFE2DCDC" >
 
     <Grid>
         <StackPanel Margin="20">
@@ -15,7 +15,7 @@
                 <Image Source="{Binding UserProfileImage}" Width="50" Height="50" Margin="0,0,10,0" Cursor="Hand" MouseLeftButtonDown="ImageChooseAvatar_MouseLeftButtonDown"/>
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="{Binding UserLoginDisplay}" FontSize="25"/>
-                </StackPanel>   
+                </StackPanel>
             </StackPanel>
 
             <!-- Buttons for 'Edit Profile' and Social Media Links -->
@@ -28,29 +28,30 @@
                 <TextBlock Text="Редактирование профиля:" FontSize="20" Margin="0,0,0,10"/>
                 <TextBlock Foreground="#B1B1B1">Ваш новый логин</TextBlock>
                 <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10"  Padding="2">
-                    <TextBox x:Name="txbLogin" Background="#FF242424" Padding="10" Foreground="#B1B1B1" SelectionBrush="#FF538CC7" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                    <TextBox x:Name="txbLogin" Background="#FF242424" Padding="10" Foreground="#B1B1B1" SelectionBrush="#FF538CC7" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="15"/>
                 </Border>
                 <TextBlock Foreground="#B1B1B1">Ваш новый E-Mail</TextBlock>
                 <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10" Padding="2">
-                    <TextBox x:Name="txbEmail" Background="#FF242424" Padding="10" Foreground="#B1B1B1" SelectionBrush="#FF538CC7" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                    <TextBox x:Name="txbEmail" Background="#FF242424" Padding="10" Foreground="#B1B1B1" SelectionBrush="#FF538CC7" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="100"/>
                 </Border>
                 <TextBlock Foreground="#B1B1B1">Старый пароль</TextBlock>
                 <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10"  Padding="2">
-                    <PasswordBox x:Name="txbOldPwd" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                    <PasswordBox x:Name="txbOldPwd" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="50"/>
                 </Border>
                 <TextBlock Foreground="#B1B1B1">Новый пароль</TextBlock>
                 <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10"  Padding="2">
-                    <PasswordBox x:Name="txbNewPwd" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                    <PasswordBox x:Name="txbNewPwd" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="50"/>
                 </Border>
                 <TextBlock Foreground="#B1B1B1">Повторите пароль</TextBlock>
-                <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10"  Padding="2">
-                    <PasswordBox x:Name="txbNewPwdAgain" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 5"  Padding="2">
+                    <PasswordBox x:Name="txbNewPwdAgain" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="#FF538CC7" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="50"/>
                 </Border>
+
 
                 <!-- Save Button -->
 
             </StackPanel>
-            <Border CornerRadius="5" Background="#FF242424" Margin="0 10 0 0" Padding="2" Width="300" HorizontalAlignment="Left" Cursor="Hand">
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 15 0 0" Padding="2" Width="300" HorizontalAlignment="Left" Cursor="Hand">
                 <Button Content="Сохранить" Padding="5" Background="{x:Null}" Foreground="#FFE2DCDC" BorderBrush="{x:Null}" Click="SaveUserProfileButton_Click" />
             </Border>
         </StackPanel>
