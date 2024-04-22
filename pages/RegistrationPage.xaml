@@ -31,22 +31,22 @@
         <StackPanel Grid.Row="1" Margin="20" Grid.ColumnSpan="2">
             <TextBlock Foreground="#B1B1B1"> Логин</TextBlock>
             <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20" Padding="2">
-                <TextBox x:Name="LoginTextBox" Background="#FF242424" Padding="10"  Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+                <TextBox x:Name="LoginTextBox" Background="#FF242424" Padding="10"  Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="10" />
             </Border>
             <TextBlock Foreground="#B1B1B1"> Пароль</TextBlock>
             <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20"  Padding="2">
-                <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+                <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="47" />
             </Border>
             <TextBlock Foreground="#B1B1B1"> Повторите пароль</TextBlock>
             <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 20" Padding="2" Cursor="IBeam">
-                <PasswordBox x:Name="PasswordTextboxRetry" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+                <PasswordBox x:Name="PasswordTextboxRetry" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="50" />
             </Border>
             <TextBlock Foreground="#B1B1B1">Email</TextBlock>
 
             <Border CornerRadius="5" Background="#FF242424"  Padding="2">
-                <TextBox x:Name="EmailTextBox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" />
+                <TextBox x:Name="EmailTextBox" Background="#FF242424" Padding="10" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="100" />
             </Border>
-            <Border CornerRadius="5" Background="#FF242424" Margin="0 30 0 0" Padding="2" Width="300" HorizontalAlignment="Left" Cursor="Hand">
+            <Border CornerRadius="5" Background="#FF242424" Margin="0 20 0 0" Padding="2" Width="300" HorizontalAlignment="Left" Cursor="Hand">
                 <Button Content="Зарегистрироваться" Padding="5"  Background="{x:Null}" Foreground="AntiqueWhite" BorderBrush="{x:Null}" Click="FullyRegButton_Click"/>
             </Border>
         </StackPanel>

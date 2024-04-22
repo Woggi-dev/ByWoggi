@@ -47,11 +47,11 @@ namespace ByWoggi
 
                 if (authService.RegisterUser(login, pwd, email, ImageConverter.ImageToByteArray(new BitmapImage(new Uri("pack://application:,,,/images/avatar.png", UriKind.RelativeOrAbsolute)))))
                 {
-                    MessageBox.Show("Регистрация успешна!");
+                    MessageBox.Show("Вы зарегистрировались", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Пользователь с таким логином или email уже существует");
+                    MessageBox.Show("Пользователь с таким логином или email уже существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

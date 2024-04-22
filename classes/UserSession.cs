@@ -16,8 +16,7 @@ namespace ByWoggi.classes
 
         public void SignIn(User user)
         {
-            CurrentUser = user; // Устанавливаем текущего пользователя
-            MessageBox.Show("Вы вошли как: " + user.login); // Только для проверки!
+            CurrentUser = user; 
             OnLoginStatusChanged?.Invoke();
         }
 

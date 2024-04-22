@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:local="clr-namespace:ByWoggi" xmlns:classes="clr-namespace:ByWoggi.classes" d:DataContext="{d:DesignInstance Type=classes:MainViewModel}"
             mc:Ignorable="d"
-         Title="MainWindow" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized">
+         Title="ByWoggi" Height="1080" Width="1920" MinWidth="660" FontFamily="Bahnschrift Light" WindowState="Maximized" Icon="/images/main.png">
     <!-- Ресурсы для стилизации элементов -->
     <Window.Resources>
         <!-- Стиль шапки -->
@@ -85,16 +85,17 @@
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" MouseLeftButtonDown="RightHeaderGroup_PreviewMouseLeftButtonDown" Cursor="Hand" Margin="15 0 0 0">
                             <!-- Всплывающее меню -->
                             <Popup IsOpen="{Binding IsChecked, ElementName=LoginToggleButton}" x:Name="AuthPopup" PlacementTarget="{Binding ElementName=RightHeaderGroup}" Placement="Bottom" StaysOpen="True">
-                                <Border Height="195" Padding="10" Background="#FF12120C" BorderThickness="0,0,0,0">
+                                <Border Height="197" Padding="10" Background="#FF12120C" BorderThickness="0,0,0,0">
                                     <StackPanel>
                                         <TextBlock Foreground="#B1B1B1">Логин</TextBlock>
                                         <Border CornerRadius="5" Background="#FF242424" Margin="0 0 0 10">
-                                            <TextBox x:Name="LoginTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                                            <TextBox x:Name="LoginTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="15"/>
                                         </Border>
                                         <TextBlock Foreground="#B1B1B1">Пароль</TextBlock>
                                         <Border CornerRadius="5" Background="#FF242424">
-                                            <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam"/>
+                                            <PasswordBox x:Name="PasswordTextbox" Background="#FF242424" Padding="10" Width="198" Foreground="#B1B1B1" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" BorderThickness="0,0,0,0" Cursor="IBeam" MaxLength="50"/>
                                         </Border>
+
                                         <Border CornerRadius="5" Background="#FF242424" Width="110" Margin="0 10 0 0">
                                             <Button Content="Войти" Width="110" Padding="5" Background="{x:Null}" Foreground="AntiqueWhite" BorderBrush="{x:Null}" Cursor="Hand" Click="LoginButton_Click"/>
                                         </Border>
@@ -109,9 +110,9 @@
                             <Popup x:Name="UserPopup" IsOpen="{Binding IsChecked, ElementName=ProfileToggleButton}"  Placement="Bottom" PlacementTarget="{Binding ElementName=RightHeaderGroup}" StaysOpen="True">
                                 <Border Background="#FF12120C" Height="120" Width="180" Padding="10" BorderThickness="1,1,1,1" BorderBrush="#FF12120C">
                                     <StackPanel>
-                                        <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Horizontal" PreviewMouseLeftButtonDown="UserProfilePage_PreviewMouseLeftButtonDown" Cursor="Hand">
                                             <Image Source="{Binding UserProfileImage}" Width="Auto" MaxHeight="55" HorizontalAlignment="Left"/>
-                                            <StackPanel Orientation="Vertical" Margin="7" PreviewMouseLeftButtonDown="UserProfilePage_PreviewMouseLeftButtonDown" Cursor="Hand">
+                                            <StackPanel Orientation="Vertical" Margin="7">
                                                 <TextBlock Text="{Binding UserLoginDisplay}" Foreground="White" Margin="5 0 0 0" FontSize="22"/>
                                                 <TextBlock Text="Мой профиль"  Foreground="LightGray" Margin="5 1 0 0" FontSize="13"/>
                                             </StackPanel>
@@ -166,7 +167,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <StackPanel PreviewMouseLeftButtonDown="CurrentGame_PreviewMouseLeftButtonDown" Cursor="Hand">
+                                <StackPanel PreviewMouseLeftButtonDown="CurrentGame_PreviewMouseLeftButtonDown" Cursor="Hand" >
                                     <Image Grid.Row="0" Source="{Binding imagePath}"/>
                                     <TextBlock Grid.Row="1" Text="{Binding name}" TextWrapping="Wrap" Foreground="White" Margin="0 5 0 0" FontSize="16" TextAlignment="Left" />
                                 </StackPanel>

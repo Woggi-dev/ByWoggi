@@ -284,6 +284,7 @@
     <Resource Include="images\main.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Screenshot_64.png" />
     <Resource Include="images\moon.png" />
     <Resource Include="images\sun.png" />
     <Resource Include="images\avatar.png" />

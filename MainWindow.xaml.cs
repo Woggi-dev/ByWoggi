@@ -70,7 +70,6 @@ namespace ByWoggi
         private void LeftHeaderBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainContent.Content = null;
-            MainContent.Content = null;
             GameListView.Visibility = Visibility.Visible;
             PrintAllGames();
 
@@ -85,7 +84,7 @@ namespace ByWoggi
 
                 if (user == null)
                 {
-                    MessageBox.Show("Неверный логин или пароль");
+                    MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -96,7 +95,7 @@ namespace ByWoggi
             }
 
 
-            MessageBox.Show("Вход успешен!");
+            MessageBox.Show("Вход успешен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CurrentGame_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -174,7 +173,7 @@ namespace ByWoggi
                 }
                 else
                 {
-                    MessageBox.Show("Информация не найдена.");
+                    MessageBox.Show("Информация не найдена.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -200,7 +199,12 @@ namespace ByWoggi
         {
             _mainViewModel.userSession.SignOut();
             UserPopup.IsOpen = false;
+            MainContent.Content = null;
+            GameListView.Visibility = Visibility.Visible;
+
+
         }
+
     }
 }
 
